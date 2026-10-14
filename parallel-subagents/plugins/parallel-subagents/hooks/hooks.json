@@ -1,0 +1,43 @@
+{
+  "description": "parallel-subagents orchestration: inject orchestration policy (root session) and project rules (hand subagents).",
+  "hooks": {
+    "SessionStart": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 \"${PLUGIN_ROOT}/scripts/subagents_policy.py\" session-start",
+            "timeout": 10,
+            "statusMessage": "Loading parallel-subagents orchestration policy",
+            "additionalContextLimit": 2500
+          }
+        ]
+      }
+    ],
+    "UserPromptSubmit": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 \"${PLUGIN_ROOT}/scripts/subagents_policy.py\" user-prompt",
+            "timeout": 10,
+            "additionalContextLimit": 1200
+          }
+        ]
+      }
+    ],
+    "SubagentStart": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 \"${PLUGIN_ROOT}/scripts/subagents_policy.py\" subagent-start",
+            "timeout": 10,
+            "statusMessage": "Loading project rules for hand",
+            "additionalContextLimit": 2500
+          }
+        ]
+      }
+    ]
+  }
+}

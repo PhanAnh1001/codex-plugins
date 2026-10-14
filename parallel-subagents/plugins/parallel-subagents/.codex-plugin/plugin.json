@@ -1,0 +1,21 @@
+{
+  "name": "parallel-subagents",
+  "version": "0.1.0",
+  "description": "Parallel subagent orchestration for Codex: the root session (brain) splits work into bounded briefs, runs hand subagents in parallel, reviews and synthesizes their results. Project-specific rules come from .codex/subagents.md.",
+  "author": {
+    "name": "anhtp"
+  },
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "Parallel Subagents",
+    "shortDescription": "Orchestrate hand subagents in parallel.",
+    "longDescription": "Parallel subagent orchestration ported from the Claude Code 'parallel-subagents' plugin. The root session acts as orchestrator (brain): it splits a task into bounded briefs, runs several hand worker subagents in parallel, then reviews and synthesizes their results. Hooks inject the brief template and orchestration policy into the root session and the project's rules into every spawned hand; a skill carries the full policy; a custom agent definition provides the hand role.",
+    "developerName": "anhtp",
+    "category": "Productivity",
+    "capabilities": [
+      "Interactive",
+      "Write"
+    ],
+    "defaultPrompt": "Use $parallel-subagents to orchestrate this task across parallel hand subagents."
+  }
+}

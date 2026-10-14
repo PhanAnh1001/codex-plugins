@@ -1,0 +1,7 @@
+interface:
+  display_name: "Parallel Subagents"
+  short_description: "Orchestrate hand subagents in parallel"
+  default_prompt: "Use $parallel-subagents to orchestrate this task across parallel hand subagents."
+
+policy:
+  allow_implicit_invocation: true

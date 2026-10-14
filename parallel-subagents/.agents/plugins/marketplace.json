@@ -1,0 +1,20 @@
+{
+  "name": "parallel-subagents-local",
+  "interface": {
+    "displayName": "Parallel Subagents (local)"
+  },
+  "plugins": [
+    {
+      "name": "parallel-subagents",
+      "source": {
+        "source": "local",
+        "path": "./plugins/parallel-subagents"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Productivity"
+    }
+  ]
+}
