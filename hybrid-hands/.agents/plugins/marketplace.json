@@ -1,0 +1,20 @@
+{
+  "name": "hybrid-hands-local",
+  "interface": {
+    "displayName": "Hybrid Hands (local)"
+  },
+  "plugins": [
+    {
+      "name": "hybrid-hands",
+      "source": {
+        "source": "local",
+        "path": "./plugins/hybrid-hands"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Productivity"
+    }
+  ]
+}

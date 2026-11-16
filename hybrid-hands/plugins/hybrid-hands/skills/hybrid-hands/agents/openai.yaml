@@ -1,0 +1,6 @@
+interface:
+  display_name: "Hybrid Hands"
+  short_description: "Delegate roles using hybrid-hands core policy"
+  default_prompt: "Use $hybrid-hands to resolve this repo's profile and delegate a bounded task using core policy."
+policy:
+  allow_implicit_invocation: true
