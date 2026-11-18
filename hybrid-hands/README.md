@@ -82,3 +82,9 @@ kiểm version/path thực tế được nạp, skill discovery và cấu hình 
 Các lệnh trên là hướng dẫn, không chứng nhận đã cài ở home thật. Báo riêng
 kết quả cài đặt, discovery và native invocation; không suy invocation từ
 file agent đã sinh hoặc plugin đã cài.
+
+## Tương thích model mới
+
+Sol/Astra6.2 được chuyển nguyên từ core sang pick/agent; cần core0.67.2
+để chọn qua profile/model CLI. Không đổi default hoặc luật chọn model cũ,
+không thêm bảng model ở adapter. Xem [phạm vi và kiểm thử](docs/gpt62-compatibility.md).
