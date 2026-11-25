@@ -7,6 +7,8 @@ model, không đổi profile/account và chưa có hook tự inject ở release 
 
 Gọi `$hybrid-hands` để lấy profile/pick trước delegation. Workflow đầy đủ ở
 [SKILL.md](plugins/hybrid-hands/skills/hybrid-hands/SKILL.md).
+Gọi `$open-gpt-brain` để đổi repo sang gpt-mono và mở phiên Paseo main brain
+([SKILL.md](plugins/hybrid-hands/skills/open-gpt-brain/SKILL.md)).
 [Plan](docs/plan.md) và [spec](docs/spec.md) ghi phạm vi và điều kiện kiểm
 chứng; [changelog](CHANGELOG.md) ghi thay đổi release.
 

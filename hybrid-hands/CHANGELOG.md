@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.2.0 — 2026-11-25
+
+- Thêm skill `$open-gpt-brain`: gọi script canonical `open-gpt-brain` cạnh
+  core `hand-ext` (không sao chép logic) để đổi profile sang gpt-mono, bật
+  subagent native và mở phiên Paseo main brain (GPT sol hoặc Claude v1/v2).
+
 ## 0.1.0 — 2026-11-16
 
 - Thêm skill `$hybrid-hands` và metadata UI cho workflow profile/pick,

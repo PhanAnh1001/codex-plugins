@@ -1,6 +1,6 @@
 {
   "name": "hybrid-hands",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Codex adapter for canonical hybrid-hands profile and bounded executor workflows.",
   "author": {
     "name": "Local"
