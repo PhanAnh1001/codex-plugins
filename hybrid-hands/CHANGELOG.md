@@ -1,5 +1,16 @@
 # Changelog
 
+## 0.2.1 — 2026-11-25
+
+- Source-only: hand mặc định không commit/push; chỉ packet rõ ràng của brain
+  cấp quyền theo repository/action/branch và remote cho push, luôn giữ luật
+  ưu tiên cao hơn/runtime ban. Không cài hay reload runtime hiện tại.
+
+- Nạp đầy đủ skill qua hook Codex SessionStart startup/resume, resolve từ plugin
+  thực tế; bỏ qua payload sai và subagent, lỗi đọc skill không chặn phiên.
+- Giữ profile/pick và cài agent theo luồng hiện có; không sửa hook global.
+- Soạn ngày 17/11/2026 ở thư mục chính dưới tên 0.1.1, chưa commit; đưa lên trên 0.2.0 và commit ngày 25/11/2026.
+
 ## 0.2.0 — 2026-11-25
 
 - Thêm skill `$open-gpt-brain`: gọi script canonical `open-gpt-brain` cạnh

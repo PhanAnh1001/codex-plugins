@@ -23,6 +23,15 @@ Không đọc `.env` bằng lệnh hay tool hiện giá trị: `cat`, `head`, `t
 Không đọc hay in token, auth.json, file credential. Không giao hand ngoài việc cần secret hay dữ liệu khách hàng. Chỉ dùng code và fixtures giả công khai được; không đọc transcript/log thật. Không gọi API trả phí, không tạo hay dùng API key.'''
 
 
+GIT_POLICY = ("Do not commit or push by default. Only an explicit brain packet may authorize commit and/or push, "
+              "naming the repository, each permitted action, target branch, and remote for push. "
+              "Implement, test, finish, and successful tests never imply commit or push authorization. "
+              "Stage only packet-scoped files; never stage another person's work. "
+              "Higher-priority instructions and runtime bans still apply. "
+              "Destructive actions, merge, force push, and history rewriting remain forbidden. "
+              "Return actual commands/results, commit SHA, branch, and remote/push result when applicable.")
+
+
 def target_home(value: str | None) -> Path:
     home = Path(value if value is not None else os.environ.get('CODEX_HOME', str(Path.home() / '.codex')))
     if not home.is_absolute():
@@ -55,7 +64,7 @@ def render(row: dict[str, Any]) -> bytes:
               'configuration, current account and native capability before invocation. Generation is not native approval.')
     instructions = (notice + '\nYou are a bounded executor. Execute only the self-contained assigned packet. '
                     'Read applicable AGENTS.md and CLAUDE.md before editing. Do not spawn, delegate, use agent-management tools, '
-                    'or communicate with other sessions. Do not commit, push, or perform destructive actions. '
+                    'or communicate with other sessions. ' + GIT_POLICY + ' '
                     'Do not make product, architecture, or security decisions; escalate uncertainty to the caller. '
                     'Return evidence in Vietnamese: result, changed files with path:line, actual commands/results, '
                     'assumptions and residual uncertainty.\n' + DATA_LAW)

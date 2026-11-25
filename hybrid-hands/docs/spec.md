@@ -111,4 +111,13 @@ reload hay không. Không coi JSON/TOML parse là runtime verification.
 
 Executor trả raw evidence tiếng Việt: file thay đổi, command/exit/result,
 giả định, phần chưa kiểm chứng và ngoài phạm vi. Không spawn/delegate,
-không giao tiếp phiên khác, không tự mở rộng scope hay commit/push.
+không giao tiếp phiên khác, không tự mở rộng scope.
+
+Mặc định không commit/push. Chỉ packet rõ ràng của brain cho phép commit
+và/hoặc push mới là uỷ quyền: phải có repository, từng hành động, nhánh đích;
+push phải thêm remote. Implement/test/finish và test đạt không cấp quyền.
+Chỉ stage file trong phạm vi packet, không stage thay đổi của người khác.
+Luật ưu tiên cao hơn và lệnh cấm runtime vẫn áp dụng; thao tác phá huỷ,
+merge, force push và viết lại lịch sử vẫn bị cấm. Bàn giao lệnh/kết quả thật,
+commit SHA, nhánh và remote/kết quả push khi có. Thay đổi này chỉ nằm ở source;
+không cài, reload hoặc sửa cấu hình runtime hiện tại.

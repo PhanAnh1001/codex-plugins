@@ -113,3 +113,22 @@ def test_core_exit_preserved_without_writes(tmp_path, core, monkeypatch):
     monkeypatch.setattr(installer, 'run_core', lambda *args: ({}, 7))
     assert install(tmp_path, core[0], True) == ([], 7)
     assert not (tmp_path / 'home').exists()
+
+
+@pytest.mark.parametrize('key', list(installer.AGENTS))
+def test_generated_git_authorization_contract(core, key):
+    row = installer.validate_rows(core[1])[list(installer.AGENTS).index(key)]
+    instructions = tomllib.loads(installer.render(row).decode())['developer_instructions']
+    assert installer.GIT_POLICY in instructions
+    for requirement in (
+        'Do not commit or push by default.',
+        'Only an explicit brain packet may authorize commit and/or push',
+        'repository, each permitted action, target branch, and remote for push',
+        'successful tests never imply commit or push authorization',
+        "never stage another person's work",
+        'Higher-priority instructions and runtime bans still apply',
+        'Destructive actions, merge, force push, and history rewriting remain forbidden',
+        'commit SHA, branch, and remote/push result',
+    ):
+        assert requirement in instructions
+    assert 'Do not commit, push, or perform destructive actions.' not in instructions

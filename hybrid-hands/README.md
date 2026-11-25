@@ -1,9 +1,10 @@
 # Hybrid Hands cho Codex
 
-Adapter 0.1.0 đóng gói workflow skill và script mỏng cho core hybrid-hands
+Adapter 0.2.1 đóng gói workflow skill và script mỏng cho core hybrid-hands
 0.66.0. Source adapter ở `~/app/codex-plugins/hybrid-hands`; core tiếp tục ở
 `~/app/claude-plugins/hybrid-hands`. Adapter không sao chép policy hay bảng
-model, không đổi profile/account và chưa có hook tự inject ở release đầu.
+model, không đổi profile/account. Hook SessionStart nạp đầy đủ skill khi
+startup/resume ở phiên gốc; xem [contract và kiểm chứng](docs/startup-hook.md).
 
 Gọi `$hybrid-hands` để lấy profile/pick trước delegation. Workflow đầy đủ ở
 [SKILL.md](plugins/hybrid-hands/skills/hybrid-hands/SKILL.md).
@@ -60,7 +61,7 @@ CLI Codex 0.169.0 đã được probe với compatibility manifest
 `plugin.json` trên binary này. Marketplace local tên `hybrid-hands-local`,
 đăng ký package root `hybrid-hands`, source `./plugins/hybrid-hands`. Plugin
 không tự đăng ký agent từ file static; dùng generator ở trên cho home được
-phép. Release 0.1.0 không có hook tự inject.
+phép. Release 0.2.1 có hook tự nạp skill cho startup/resume.
 
 Cho từng home đã được duyệt, dùng CLI chính thức (không chép registry):
 
@@ -90,3 +91,23 @@ file agent đã sinh hoặc plugin đã cài.
 Sol/Astra6.2 được chuyển nguyên từ core sang pick/agent; cần core0.67.2
 để chọn qua profile/model CLI. Không đổi default hoặc luật chọn model cũ,
 không thêm bảng model ở adapter. Xem [phạm vi và kiểm thử](docs/gpt62-compatibility.md).
+
+## Uỷ quyền Git cho hand (0.2.1)
+
+Hand mặc định dừng sau sửa code và kiểm chứng. Brain muốn hand commit/push
+phải giao packet rõ repository, hành động commit và/hoặc push, nhánh đích và
+remote cho push. Test đạt hoặc yêu cầu “finish” không cấp quyền. Chỉ stage
+file thuộc packet; không stage thay đổi của người khác. Luật ưu tiên cao hơn
+và lệnh cấm runtime vẫn áp dụng; merge, force push, viết lại lịch sử và thao
+tác phá huỷ vẫn cấm. Hand báo lệnh/kết quả, SHA, nhánh, remote/kết quả push.
+Đây là thay đổi source; không chứng nhận quyền của phiên đang chạy hay tự
+cài/reload runtime. Contract chi tiết ở [spec](docs/spec.md).
+
+### Social listening
+
+Nguồn do brain cung cấp, đọc ngày 2026-11-17: cộng đồng báo việc push ngoài
+uỷ quyền tại [#67060](https://github.com/anthropics/claude-code/issues/67060)
+(2026-06-10) và [#59498](https://github.com/anthropics/claude-code/issues/59498)
+(2026-05-15). Đây là báo cáo cộng đồng chưa kiểm chứng, không phải bằng chứng
+trực tiếp về Codex. Vì vậy chính sách tách quyền commit/push thành hành động
+phải ghi rõ trong packet; test thành công không được xem là quyền push.

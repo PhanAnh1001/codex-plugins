@@ -72,15 +72,25 @@ vi cài đặt được giao; kiểm metadata runtime sau khi nạp lại, khôn
 Cài plugin bằng CLI marketplace/add/list cho từng home được duyệt theo
 hướng dẫn trong README của source adapter. `installedPath` và version/path cache
 chứng minh cài đặt; phiên đang mở cần reload hoặc phiên mới rồi kiểm lại
-version/path thực tế được nạp. Release 0.1.0 không có hook tự inject.
+version/path thực tế được nạp. Release 0.2.1 nạp skill qua SessionStart ở startup/resume; hook không chạy
+profile/pick hay tự thay đổi runtime.
 
 ## Brief và bàn giao
 
 Brief phải có objective, phạm vi ghi/ownership, non-goals, acceptance,
 source liên quan và lệnh kiểm chứng hẹp. Các hand không cùng sửa file hay
 phụ thuộc đồng thời. Ghi rõ hand không một mình, giữ thay đổi của người khác;
-không delegation, quản lý/giao tiếp phiên khác, mở side-session, commit hay
-push. Hand dừng sau implementation và verification, trả evidence cho brain.
+không delegation, quản lý/giao tiếp phiên khác hay mở side-session.
+
+Mặc định hand không commit/push. Chỉ packet rõ ràng của brain mới cho phép
+commit và/hoặc push, ghi repository, từng hành động được phép, nhánh đích;
+push còn phải ghi remote. “Implement”, “test”, “finish” hoặc test đạt không
+hàm ý quyền commit/push. Chỉ stage file thuộc phạm vi packet, không stage
+thay đổi của người khác. Luật ưu tiên cao hơn và lệnh cấm runtime vẫn áp dụng.
+Không được làm thao tác phá huỷ, merge, force push hay viết lại lịch sử.
+Bàn giao lệnh/kết quả thật, commit SHA, nhánh và remote/kết quả push khi có.
+Nếu không được giao hành động Git rõ ràng, hand dừng sau implementation và
+verification, trả evidence cho brain.
 
 Chép nguyên văn ba đoạn luật dữ liệu sau vào brief hand ngoài:
 
