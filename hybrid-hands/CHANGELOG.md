@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.3.1 — 2026-11-25
+
+- `$new-agent-paseo`: chưa rõ loại agent thì gọi ngay `request_user_input`
+  với một câu ba lựa chọn soạn sẵn (GPT v1, Claude v1, Claude v2) để Codex hiện
+  hộp chọn thay vì hỏi bằng tin nhắn. Codex 0.169.1 chỉ có tool này ở chế độ
+  Default khi bật `codex features enable default_mode_request_user_input`
+  (đang phát triển); thiếu tool thì skill hỏi bằng tin nhắn và gợi ý cách bật.
+
 ## 0.3.0 — 2026-11-25
 
 - Đổi tên skill `$open-gpt-brain` thành `$new-agent-paseo`, gọi script canonical

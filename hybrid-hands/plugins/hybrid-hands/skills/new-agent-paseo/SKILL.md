@@ -15,9 +15,24 @@ truyền `--brain`; người dùng chưa nói rõ loại agent thì hỏi trư�
 ## 1. Chọn loại agent
 
 Người dùng đã nói rõ (ví dụ "mở agent claude v2", "brain sol") thì dùng luôn,
-không hỏi. Chưa rõ thì hỏi trước khi chạy, bằng công cụ hỏi người dùng của
-Codex (`request_user_input`) nếu có; không có thì hỏi bằng một tin nhắn ngắn
-và dừng chờ trả lời. Ba lựa chọn:
+không hỏi. Chưa rõ thì gọi NGAY tool `request_user_input` trong cùng lượt (không
+viết tin nhắn hỏi trước, không đọc file hay chạy lệnh trước) với đúng một câu:
+
+```json
+{"questions": [{"id": "agent", "header": "Agent",
+  "question": "Mở agent Paseo nào?",
+  "options": [
+    {"label": "GPT v1 (Recommended)", "description": "gpt-6.1-sol high, gói ChatGPT chính, full-access"},
+    {"label": "Claude v1", "description": "claude-opus-5-5 high, tài khoản ~/.claude"},
+    {"label": "Claude v2", "description": "claude-opus-5-5 high, tài khoản ~/.claude-hand"}]}]}
+```
+
+Câu trả lời là xác nhận, chạy luôn không hỏi lại; huỷ hoặc trả lời khác ba lựa
+chọn thì báo "Không mở agent" rồi dừng. Chỉ khi phiên không có tool
+`request_user_input` mới hỏi bằng một tin nhắn ngắn, kèm gợi ý lần sau gọi
+thẳng `$new-agent-paseo gpt v1` và cách bật hộp chọn:
+`codex features enable default_mode_request_user_input` (rồi mở phiên mới).
+Ánh xạ lựa chọn:
 
 | Lựa chọn | Tham số | Brain |
 |---|---|---|
