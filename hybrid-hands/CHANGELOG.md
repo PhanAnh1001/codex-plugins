@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.4.0 — 2026-11-26
+
+- `$new-agent-paseo` hỏi thêm câu Context trong cùng hộp chọn: "Context mới"
+  (không truyền thêm gì) hoặc "Context phiên hiện tại" (skill viết bàn giao vào
+  `/tmp/new-agent-paseo-*.md` rồi chạy với `--context-file`, script gửi kèm vào
+  tin nhắn đầu của phiên mới). Cần core hybrid-hands 0.71.0.
+
 ## 0.3.1 — 2026-11-25
 
 - `$new-agent-paseo`: chưa rõ loại agent thì gọi ngay `request_user_input`
