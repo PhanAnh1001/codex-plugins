@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.3.0 — 2026-11-25
+
+- Đổi tên skill `$open-gpt-brain` thành `$new-agent-paseo`, gọi script canonical
+  `new-agent-paseo`; tên cũ `$open-gpt-brain` không còn.
+- Thêm bước chọn loại agent (GPT v1, Claude v1, Claude v2): chưa nói rõ thì hỏi
+  người dùng; skill luôn truyền `--brain`.
+
 ## 0.2.1 — 2026-11-25
 
 - Source-only: hand mặc định không commit/push; chỉ packet rõ ràng của brain

@@ -8,8 +8,8 @@ startup/resume ở phiên gốc; xem [contract và kiểm chứng](docs/startup-
 
 Gọi `$hybrid-hands` để lấy profile/pick trước delegation. Workflow đầy đủ ở
 [SKILL.md](plugins/hybrid-hands/skills/hybrid-hands/SKILL.md).
-Gọi `$open-gpt-brain` để đổi repo sang gpt-mono và mở phiên Paseo main brain
-([SKILL.md](plugins/hybrid-hands/skills/open-gpt-brain/SKILL.md)).
+Gọi `$new-agent-paseo` để chọn loại agent (GPT v1, Claude v1, Claude v2), đổi repo sang gpt-mono và mở phiên Paseo main brain
+([SKILL.md](plugins/hybrid-hands/skills/new-agent-paseo/SKILL.md)).
 [Plan](docs/plan.md) và [spec](docs/spec.md) ghi phạm vi và điều kiện kiểm
 chứng; [changelog](CHANGELOG.md) ghi thay đổi release.
 
